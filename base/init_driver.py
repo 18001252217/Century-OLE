@@ -3,7 +3,7 @@ import time
 from appium import webdriver
 
 
-def init_driver():
+def init_driver(no_reset):
     # 服务端启动参数
     desired_caps = {}
     # 手机 系统信息
@@ -19,7 +19,9 @@ def init_driver():
     desired_caps['unicodeKeyboard'] = True
     desired_caps['resetKeyboard'] = True
     # appium每次启动都会重置应用，不想重置，添加这行
-    desired_caps['noReset'] = 'True'
+    desired_caps['noReset'] = no_reset
+    # 寻找toast
+    desired_caps['automationName'] = 'Uiautomator2'
 
     # 手机驱动对象
     return webdriver.Remote("http://127.0.0.1:4723/wd/hub", desired_caps)
