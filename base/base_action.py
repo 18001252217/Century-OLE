@@ -143,7 +143,7 @@ class BaseAction:
         page_source = ""
         while True:
             try:
-                return self.base_find_element(*feature)
+                return self.base_find_element(feature)
             except Exception:
                 self.scroll_page_one_time(direction)
                 if page_source == self.driver.page_source:
